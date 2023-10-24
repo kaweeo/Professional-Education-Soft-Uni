@@ -14,3 +14,6 @@ The "Programming Basics" course provides the initial programming skills necessar
 # Certificate
 
 ![Image](https://github.com/kaweeo/Professional-Education-Soft-Uni/blob/main/Porgramming%20Basics%20Jul%202023/CertBasics.png)
+
+###### [Documents](https://github.com/kaweeo/Professional-Education-Soft-Uni/blob/main/Porgramming%20Basics%20Jul%202023/Programming%20Basics%20-%20July%202023%20-%20Certificate.pdf)
+###### [SoftUni](https://softuni.bg/certificates/details/182741/6fc6b905)
