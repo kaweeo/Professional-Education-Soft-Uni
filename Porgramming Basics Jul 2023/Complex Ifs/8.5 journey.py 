@@ -1,0 +1,6 @@
+# "summer” или "winter”
+
+season = input()
+budjet = float(input())
+
+if season == "summer"
