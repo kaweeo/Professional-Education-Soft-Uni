@@ -1,0 +1,2 @@
+age_of_lily = int(input())
+wash_mach_price = float(input())
