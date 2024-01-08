@@ -1,5 +1,6 @@
 from collections import deque
 queue = deque()
+
 while True:
     command = input()
     if command == "Paid":
