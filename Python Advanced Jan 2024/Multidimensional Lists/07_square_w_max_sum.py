@@ -24,7 +24,7 @@ for col_index in range(columns_count - 1):
             max_sum_elements.append(matrix[row_index + 1][col_index])
             max_sum_elements.append(matrix[row_index + 1][col_index + 1])
             max_top_left_coords = (row_index, col_index)
-x
+
 for i in range(2):
     for j in range(2):
         print(matrix[max_top_left_coords[0] + i][max_top_left_coords[1] + j], end=" ")
