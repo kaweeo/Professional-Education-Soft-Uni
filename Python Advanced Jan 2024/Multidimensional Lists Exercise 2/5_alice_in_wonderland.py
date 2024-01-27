@@ -7,6 +7,7 @@ def move(direction: str, position: list):
 size = int(input())
 field = []
 teabags_quantity = 0
+alice_pos = []
 
 for row in range(size):
     field.append(input().split())
