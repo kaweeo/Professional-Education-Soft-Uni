@@ -82,6 +82,7 @@ while number_presents > 0:
 [print(*row) for row in town]
 if number_nice_kids == 0:
     print(f"Good job, Santa! {nice_kids_with_presents} happy nice kid/s.")
+
 else:
     print(f"No presents for {number_nice_kids} nice kid/s.")
 
