@@ -34,10 +34,9 @@ while True:
     if not (0 <= next_row < n and 0 <= next_col < m):
         print("The delivery is late. Order is canceled.")
         field[pre_game_pos[0]][pre_game_pos[1]] = " "
-        break  # Maybe not break here
-        # TODO something else might happen here
         next_row = current_row
         next_col = current_row
+        break
     else:
         if field[next_row][next_col] == "P":
             field[next_row][next_col] = "R"
