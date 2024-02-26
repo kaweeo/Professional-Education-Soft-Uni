@@ -1,0 +1,1 @@
+url = "https://softuni.bg/trainings/resources/officedocument/95059/algorithms-introduction-lab-python-advanced-january-2024/4370"
