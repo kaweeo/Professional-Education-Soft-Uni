@@ -1,0 +1,30 @@
+from abc import ABC, abstractmethod
+
+
+class Animal(ABC):
+    def __init__(self, name: str, weight: float):
+        self.name = name
+        self.weight = weight
+        self.food_eaten = 0
+
+    @abstractmethod
+    def make_sound(self):
+        ...
+
+
+class Bird(Animal, ABC):
+    def __init__(self, name, weight, wing_size: float):
+        super().__init__(name, weight)
+        self.wing_size = wing_size
+
+    # def make_sound(self):         # It should be inherited and no need to def again because it is abstract class
+    #     pass
+
+
+class Mammal(Animal, ABC):
+    def __init__(self, name, weight, living_region: str):
+        super().__init__(name, weight)
+        self.living_region = living_region
+
+    # def make_sound(self):         # It should be inherited and no need to def again because it is abstract class
+    #     pass
