@@ -14,7 +14,7 @@ class Programmer:
     def change_language(self, new_language, skills_needed):
         if self.language != new_language:
             if self.skills >= skills_needed:
-                previous_language = self.language   # TODO: CARE
+                previous_language = self.language
                 self.language = new_language
                 return f"{self.name} switched from {previous_language} to {new_language}"
 
