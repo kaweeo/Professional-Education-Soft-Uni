@@ -1,4 +1,4 @@
-from peaks.base_peak import BasePeak
+from project.peaks.base_peak import BasePeak
 
 
 class SummitPeak(BasePeak):

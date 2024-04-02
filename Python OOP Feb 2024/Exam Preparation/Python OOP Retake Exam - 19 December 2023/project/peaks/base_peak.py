@@ -6,7 +6,7 @@ class BasePeak(ABC):
     def __init__(self, name, elevation):
         self.name = name
         self.elevation = elevation
-        self.difficulty_level = calculate_difficulty_level()
+        self.difficulty_level = self.calculate_difficulty_level()
 
     @property
     def name(self):
