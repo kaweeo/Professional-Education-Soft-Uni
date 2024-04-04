@@ -151,12 +151,12 @@ class SummitQuestManagerApp():
 
 
 # from typing import List
-# from project 1& 2.peaks.base_peak import BasePeak
-# from project 1& 2.climbers.base_climber import BaseClimber
-# from project 1& 2.climbers.arctic_climber import ArcticClimber
-# from project 1& 2.climbers.summit_climber import SummitClimber
-# from project 1& 2.peaks.summit_peak import SummitPeak
-# from project 1& 2.peaks.arctic_peak import ArcticPeak
+# from project test 1&2 1& 2.peaks.base_peak import BasePeak
+# from project test 1&2 1& 2.climbers.base_climber import BaseClimber
+# from project test 1&2 1& 2.climbers.arctic_climber import ArcticClimber
+# from project test 1&2 1& 2.climbers.summit_climber import SummitClimber
+# from project test 1&2 1& 2.peaks.summit_peak import SummitPeak
+# from project test 1&2 1& 2.peaks.arctic_peak import ArcticPeak
 
 #
 # class SummitQuestManagerApp:

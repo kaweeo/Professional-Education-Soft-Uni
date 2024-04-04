@@ -13,7 +13,7 @@ class Coffee(HotBeverage):
     def caffeine(self):
         return self.__caffeine
 
-# from project 1& 2.beverage.hot_beverage import HotBeverage
+# from project test 1&2 1& 2.beverage.hot_beverage import HotBeverage
 #
 #
 # class Coffee(HotBeverage):
