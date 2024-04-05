@@ -1,6 +1,6 @@
 # from abc import ABC, abstractmethod
 #
-# from project test 1&2 1& 2.peaks.base_peak import BasePeak
+# from project 1&2 test 1&2 1& 2.peaks.base_peak import BasePeak
 #
 #
 # class BaseClimber(ABC):
