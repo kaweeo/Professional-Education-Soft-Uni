@@ -82,8 +82,8 @@ class InfluencerManagerApp:
 
     def influencer_campaign_report(self, username: str):
         influencer = next((i for i in self.influencers if i.username == username), None)
-
-        return influencer.display_campaigns_participated()
+        if influencer:
+            return influencer.display_campaigns_participated()
 
 
     def campaign_statistics(self):
@@ -100,3 +100,13 @@ class InfluencerManagerApp:
 
         return statistics_str
 
+
+
+    # # Helper methods
+    # def _get_influencer(self, username: str):
+    #     influencer = [i for i in self.influencers if i.username == username]
+    #     return influencer[0] if influencer else None
+    #
+    # def _get_campaign(self, campaign_id: int):
+    #     campaign = [c for c in self.campaigns if c.campaign_id == campaign_id]
+    #     return campaign[0] if campaign else None
