@@ -16,6 +16,7 @@ class BaseRobot(ABC):
     def name(self, value):
         if value.strip() == "":
             raise ValueError("Robot name cannot be empty!")
+
         self.__name = value
 
     @property
@@ -26,6 +27,7 @@ class BaseRobot(ABC):
     def kind(self, value):
         if value.strip() == "":
             raise ValueError("Robot kind cannot be empty!")
+
         self.__kind = value
 
     @property
@@ -36,6 +38,7 @@ class BaseRobot(ABC):
     def price(self, value):
         if value < 0.0:
             raise ValueError("Robot price cannot be less than or equal to 0.0!")
+
         self.__price = value
 
     @abstractmethod

@@ -1,10 +1,12 @@
 from project.robots.base_robot import BaseRobot
 
 
-class MaleRobot(BaseRobot):
+class MaleRobot (BaseRobot):
+    DEFAULT_WEIGHT = 9
+    WEIGHT_INCREMENT = 3
 
-    def __init__(self, name: str, kind: str, price: float, weight: int = 9):
-        super().__init__(name, kind, price, weight)
+    def __init__(self, name: str, kind: str, price: float):
+        super().__init__(name, kind, price, weight=self.DEFAULT_WEIGHT)
 
     def eating(self):
-        self.weight += 3
+        self.weight += self.WEIGHT_INCREMENT

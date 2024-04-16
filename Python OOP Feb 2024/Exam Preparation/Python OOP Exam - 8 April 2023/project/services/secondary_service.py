@@ -1,15 +1,24 @@
+from typing import List
+
+from project.robots.base_robot import BaseRobot
+from project.robots.female_robot import FemaleRobot
+from project.robots.male_robot import MaleRobot
 from project.services.base_service import BaseService
 
 
 class SecondaryService(BaseService):
-    def __init__(self, name: str, capacity: int = 15):
-        super().__init__(name, capacity)
+    DEFAULT_CAPACITY = 15
+
+    def __init__(self, name: str):
+        super().__init__(name, capacity=self.DEFAULT_CAPACITY)
+        self.robots: List[FemaleRobot[BaseRobot], MaleRobot[BaseRobot]] = []
 
     def details(self):
-        robots_names = [r.name for r in self.robots]
-        if not robots_names:
-            robots_names = "none"
+        result = [self.name + " Secondary Service:" + '\n' + "Robots: "]
 
-        result = f"{self.name} Secondary Service:\n" \
-                 f"Robots: {' '.join(robots_names)}"  # care space
-        return result
+        if self.robots:
+            result.append(' '.join(robot.name for robot in self.robots))
+        else:
+            result.append("none")
+
+        return ''.join(result)

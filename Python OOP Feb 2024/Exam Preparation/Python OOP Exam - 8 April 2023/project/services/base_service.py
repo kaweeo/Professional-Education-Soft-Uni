@@ -20,6 +20,7 @@ class BaseService(ABC):
     def name(self, value):
         if value.strip() == "":
             raise ValueError("Service name cannot be empty!")
+
         self.__name = value
 
     @property
@@ -30,6 +31,7 @@ class BaseService(ABC):
     def capacity(self, value):
         if value <= 0:
             raise ValueError("Service capacity cannot be less than or equal to 0!")
+
         self.__capacity = value
 
     @abstractmethod
