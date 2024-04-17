@@ -50,7 +50,8 @@ class SphereRestaurantApp:
         if not waiter:
             return f"No waiter found with the name {waiter_name}."
 
-        return waiter.report_shift()  # TODO: CARE HERE
+        result = waiter.report_shift()
+        return result
 
     def process_client_order(self, client_name: str, order_amount: float):
         client = next(filter(lambda c: c.name == client_name, self.clients), None)
@@ -87,7 +88,7 @@ class SphereRestaurantApp:
         waiter_details_result = ""
 
         for waiter in sorted_waiters:
-            waiter_details_result += f"\nName: {waiter.name}, Total earnings: ${waiter.calculate_earnings():.2f}"
+            waiter_details_result += f"\n"+str(waiter)
 
         return result + waiter_details_result
 
