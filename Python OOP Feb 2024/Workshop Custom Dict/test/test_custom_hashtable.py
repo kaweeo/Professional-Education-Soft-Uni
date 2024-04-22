@@ -16,8 +16,6 @@ class TestHashTable(TestCase):
         result = self.h.count
         self.assertEqual(result, 0)
 
-        # TODO test when there is element which is not None
-
     def test_length(self):
         self.assertEqual(len(self.h), 4)
         self.assertEqual(len(self.h), self.h._HashTable__length)

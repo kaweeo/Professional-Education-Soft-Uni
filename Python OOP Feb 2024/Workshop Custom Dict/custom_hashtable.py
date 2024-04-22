@@ -103,12 +103,6 @@ print(type(sorted_table))
 # print(table.get("asd", "Me"))
 # table.add("number", "8")
 
-
-# TODO implement .sort() for sorting
-
-
-
-
 print(table["age"])
 # print(table["asd"])
 
