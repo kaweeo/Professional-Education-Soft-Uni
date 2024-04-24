@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/Data Types and Table Basics - Lab/1_create_tables.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/Data Types and Table Basics - Lab/2_alter_table.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/Data Types and Table Basics - Lab/3_alter_tables.sql" dialect="PostgreSQL" />
+    <file url="PROJECT" dialect="PostgreSQL" />
+  </component>
+</project>
