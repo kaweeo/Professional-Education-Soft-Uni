@@ -2,6 +2,7 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/Basic CRUD - Lab/01_select_and_display_by_concat_columns.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/Basic CRUD - Lab/07-top_paid_employee_view.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/Data Types and Table Basics - Exercise/00_create_database .sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/Data Types and Table Basics - Exercise/01_create_table.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/Data Types and Table Basics - Exercise/02_rename_table.sql" dialect="PostgreSQL" />
