@@ -25,7 +25,7 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
-    <data-source name="softuni_management_db" uuid="49f4f05a-1a01-4d96-b434-f72adc288aa0">
+    <data-source name="softuni_dbs" uuid="49f4f05a-1a01-4d96-b434-f72adc288aa0">
       <database-info product="PostgreSQL" version="14.11 (Ubuntu 14.11-0ubuntu0.22.04.1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.6.0" dbms="POSTGRES" exact-version="14.11" exact-driver-version="42.6">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
@@ -35,7 +35,17 @@
       <schema-mapping>
         <introspection-scope>
           <node negative="1">
-            <node kind="database" negative="1" />
+            <node kind="database" negative="1">
+              <name qname="@" />
+              <name qname="softuni_management_db" />
+              <name qname="river_info" />
+              <name qname="apartment_bookings" />
+            </node>
+            <node kind="database">
+              <name qname="apartment_bookings" />
+              <name qname="river_info" />
+              <node kind="schema" qname="public" />
+            </node>
             <node kind="database" qname="@">
               <node kind="schema" qname="@" />
             </node>

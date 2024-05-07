@@ -8,7 +8,7 @@
       <jdbc-url>jdbc:postgresql://172.17.0.1:5432/postgres</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="softuni_management_db" uuid="49f4f05a-1a01-4d96-b434-f72adc288aa0">
+    <data-source source="LOCAL" name="softuni_dbs" uuid="49f4f05a-1a01-4d96-b434-f72adc288aa0">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
