@@ -35,13 +35,21 @@
       <schema-mapping>
         <introspection-scope>
           <node negative="1">
-            <node kind="database" negative="1" />
+            <node kind="database" negative="1">
+              <name qname="@" />
+              <name qname="apartment_bookings" />
+              <name qname="river_info" />
+              <name qname="restaurant" />
+              <name qname="softuni_management_db" />
+              <name qname="count_of_records" />
+            </node>
             <node kind="database" qname="@">
               <node kind="schema" qname="@" />
             </node>
             <node kind="database">
               <name qname="apartment_bookings" />
               <name qname="river_info" />
+              <name qname="count_of_records" />
               <node kind="schema" qname="public" />
             </node>
             <node kind="database">
