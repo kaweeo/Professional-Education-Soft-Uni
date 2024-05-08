@@ -35,21 +35,18 @@
       <schema-mapping>
         <introspection-scope>
           <node negative="1">
-            <node kind="database" negative="1">
-              <name qname="@" />
-              <name qname="softuni_management_db" />
-              <name qname="river_info" />
-              <name qname="apartment_bookings" />
+            <node kind="database" negative="1" />
+            <node kind="database" qname="@">
+              <node kind="schema" qname="@" />
             </node>
             <node kind="database">
               <name qname="apartment_bookings" />
               <name qname="river_info" />
               <node kind="schema" qname="public" />
             </node>
-            <node kind="database" qname="@">
-              <node kind="schema" qname="@" />
-            </node>
-            <node kind="database" qname="softuni_management_db">
+            <node kind="database">
+              <name qname="restaurant" />
+              <name qname="softuni_management_db" />
               <node kind="schema" negative="1" />
             </node>
           </node>
