@@ -36,18 +36,23 @@
         <introspection-scope>
           <node negative="1">
             <node kind="database" negative="1">
+              <name qname="car_manufacture_db" />
               <name qname="camp_db" />
               <name qname="apartment_bookings" />
               <name qname="river_info" />
               <name qname="count_of_records" />
               <name qname="data_aggregation_softuni_management_db" />
               <name qname="pk_db" />
+              <name qname="customs_db" />
+              <name qname="photo_shooting_db" />
+              <name qname="study_session_db" />
               <name qname="@" />
               <name qname="restaurant" />
               <name qname="softuni_management_db" />
-              <name qname="customs_db" />
+              <name qname="online_store_db" />
             </node>
             <node kind="database">
+              <name qname="car_manufacture_db" />
               <name qname="camp_db" />
               <name qname="apartment_bookings" />
               <name qname="river_info" />
@@ -55,6 +60,9 @@
               <name qname="data_aggregation_softuni_management_db" />
               <name qname="pk_db" />
               <name qname="customs_db" />
+              <name qname="photo_shooting_db" />
+              <name qname="study_session_db" />
+              <name qname="online_store_db" />
               <node kind="schema" qname="public" />
             </node>
             <node kind="database" qname="@">
