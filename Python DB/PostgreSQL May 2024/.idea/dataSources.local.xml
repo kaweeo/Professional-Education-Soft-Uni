@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal" created-in="DB-241.15989.49">
+  <component name="dataSourceStorageLocal" created-in="DB-241.17011.41">
     <data-source name="container-postgresdb" uuid="3b7f0039-6ffd-44fa-bcac-58d62bdd53dd">
       <database-info product="PostgreSQL" version="16.2 (Debian 16.2-1.pgdg120+2)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.6.0" dbms="POSTGRES" exact-version="16.2" exact-driver-version="42.6">
         <identifier-quote-string>&quot;</identifier-quote-string>
@@ -52,8 +52,10 @@
               <name qname="restaurant" />
               <name qname="softuni_management_db" />
               <name qname="soft_uni_db" />
+              <name qname="subqueries_joins_booking_db" />
             </node>
             <node kind="database">
+              <name qname="subqueries_joins_booking_db" />
               <name qname="town_addresses_db" />
               <name qname="car_manufacture_db" />
               <name qname="camp_db" />
