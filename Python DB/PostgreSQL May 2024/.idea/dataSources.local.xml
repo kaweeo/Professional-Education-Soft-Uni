@@ -53,9 +53,10 @@
               <name qname="softuni_management_db" />
               <name qname="soft_uni_db" />
               <name qname="subqueries_joins_booking_db" />
+              <name qname="subqueries_joins_geography_db" />
             </node>
             <node kind="database">
-              <name qname="subqueries_joins_booking_db" />
+              <name qname="subqueries_joins_geography_db" />
               <name qname="town_addresses_db" />
               <name qname="car_manufacture_db" />
               <name qname="camp_db" />
@@ -69,6 +70,7 @@
               <name qname="study_session_db" />
               <name qname="online_store_db" />
               <name qname="soft_uni_db" />
+              <name qname="subqueries_joins_booking_db" />
               <node kind="schema" qname="public" />
             </node>
             <node kind="database" qname="@">
