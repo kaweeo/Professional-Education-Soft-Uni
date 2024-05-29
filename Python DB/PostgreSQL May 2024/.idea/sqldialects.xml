@@ -21,7 +21,7 @@
     <file url="file://$PROJECT_DIR$/Data Types and Table Basics - Lab/5_modify_columns.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/Database Programmability - Exercise/08_deposit_money.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/Database Programmability - Exercise/09_withdrawal_money.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/Exam Prep I/02_insert.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/Exam Prep I/2.2_insert.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/Subqueries and JOINs - Exercise/18_retrieving_info_about_indexes.sql" dialect="PostgreSQL" />
     <file url="PROJECT" dialect="PostgreSQL" />
   </component>
