@@ -37,6 +37,7 @@
           <node negative="1">
             <node kind="database" negative="1">
               <name qname="@" />
+              <name qname="zoo_db" />
               <name qname="apartment_bookings" />
               <name qname="camp_db" />
               <name qname="car_manufacture_db" />
@@ -46,6 +47,7 @@
               <name qname="db_programmability_1" />
               <name qname="db_programmability_lab" />
               <name qname="diablo_db" />
+              <name qname="games_db" />
               <name qname="online_store_db" />
               <name qname="photo_shooting_db" />
               <name qname="pk_db" />
@@ -57,12 +59,14 @@
               <name qname="town_addresses_db" />
               <name qname="restaurant" />
               <name qname="softuni_management_db" />
-              <name qname="games_db" />
+              <name qname="db_zoo_db_for_tasks" />
+              <name qname="zoo_db_for_tasks" />
             </node>
             <node kind="database" qname="@">
               <node kind="schema" qname="@" />
             </node>
             <node kind="database">
+              <name qname="zoo_db" />
               <name qname="apartment_bookings" />
               <name qname="camp_db" />
               <name qname="car_manufacture_db" />
@@ -72,6 +76,7 @@
               <name qname="db_programmability_1" />
               <name qname="db_programmability_lab" />
               <name qname="diablo_db" />
+              <name qname="games_db" />
               <name qname="online_store_db" />
               <name qname="photo_shooting_db" />
               <name qname="pk_db" />
@@ -81,7 +86,7 @@
               <name qname="subqueries_joins_booking_db" />
               <name qname="subqueries_joins_geography_db" />
               <name qname="town_addresses_db" />
-              <name qname="games_db" />
+              <name qname="zoo_db_for_tasks" />
               <node kind="schema" qname="public" />
             </node>
             <node kind="database">
