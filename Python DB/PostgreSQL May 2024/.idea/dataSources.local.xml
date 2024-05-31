@@ -26,7 +26,7 @@
       </schema-mapping>
     </data-source>
     <data-source name="softuni_dbs" uuid="49f4f05a-1a01-4d96-b434-f72adc288aa0">
-      <database-info product="PostgreSQL" version="14.11 (Ubuntu 14.11-0ubuntu0.22.04.1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.6.0" dbms="POSTGRES" exact-version="14.11" exact-driver-version="42.6">
+      <database-info product="PostgreSQL" version="14.12 (Ubuntu 14.12-0ubuntu0.22.04.1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.6.0" dbms="POSTGRES" exact-version="14.12" exact-driver-version="42.6">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
