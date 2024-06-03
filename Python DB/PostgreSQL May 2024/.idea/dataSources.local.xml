@@ -37,7 +37,6 @@
           <node negative="1">
             <node kind="database" negative="1">
               <name qname="@" />
-              <name qname="zoo_db" />
               <name qname="apartment_bookings" />
               <name qname="camp_db" />
               <name qname="car_manufacture_db" />
@@ -56,17 +55,18 @@
               <name qname="study_session_db" />
               <name qname="subqueries_joins_booking_db" />
               <name qname="subqueries_joins_geography_db" />
+              <name qname="taxi_db" />
+              <name qname="zoo_db" />
+              <name qname="zoo_db_for_tasks" />
               <name qname="town_addresses_db" />
               <name qname="restaurant" />
               <name qname="softuni_management_db" />
-              <name qname="db_zoo_db_for_tasks" />
-              <name qname="zoo_db_for_tasks" />
+              <name qname="taxi_db_2" />
             </node>
             <node kind="database" qname="@">
               <node kind="schema" qname="@" />
             </node>
             <node kind="database">
-              <name qname="zoo_db" />
               <name qname="apartment_bookings" />
               <name qname="camp_db" />
               <name qname="car_manufacture_db" />
@@ -85,8 +85,11 @@
               <name qname="study_session_db" />
               <name qname="subqueries_joins_booking_db" />
               <name qname="subqueries_joins_geography_db" />
-              <name qname="town_addresses_db" />
+              <name qname="taxi_db" />
+              <name qname="zoo_db" />
               <name qname="zoo_db_for_tasks" />
+              <name qname="town_addresses_db" />
+              <name qname="taxi_db_2" />
               <node kind="schema" qname="public" />
             </node>
             <node kind="database">
