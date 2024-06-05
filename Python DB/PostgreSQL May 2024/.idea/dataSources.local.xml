@@ -59,9 +59,11 @@
               <name qname="zoo_db" />
               <name qname="zoo_db_for_tasks" />
               <name qname="town_addresses_db" />
+              <name qname="taxi_db_2" />
+              <name qname="board_games_db" />
               <name qname="restaurant" />
               <name qname="softuni_management_db" />
-              <name qname="taxi_db_2" />
+              <name qname="board_games_db_2" />
             </node>
             <node kind="database" qname="@">
               <node kind="schema" qname="@" />
@@ -90,6 +92,8 @@
               <name qname="zoo_db_for_tasks" />
               <name qname="town_addresses_db" />
               <name qname="taxi_db_2" />
+              <name qname="board_games_db" />
+              <name qname="board_games_db_2" />
               <node kind="schema" qname="public" />
             </node>
             <node kind="database">
