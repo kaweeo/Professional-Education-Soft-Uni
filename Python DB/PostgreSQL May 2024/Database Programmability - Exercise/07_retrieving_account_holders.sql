@@ -4,7 +4,7 @@ CREATE OR REPLACE PROCEDURE sp_retrieving_holders_with_balance_higher_than(
 AS
 $$
 DECLARE
-    holder RECORD;
+    holder RECORD;   -- type RECORD (think of it like a row, запис*)
 BEGIN
     FOR holder IN
         SELECT concat_ws(' ', ah.first_name, ah.last_name) AS full_name,
