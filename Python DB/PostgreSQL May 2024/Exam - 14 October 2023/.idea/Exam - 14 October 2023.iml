@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="DBE_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../EXAM" />
+    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$/../Exam Prep I" />
+    <content url="file://$MODULE_DIR$/../Exam Prep III" />
+    <content url="file://$MODULE_DIR$/../Exam Preparation II" />
+    <content url="file://$MODULE_DIR$/../Retake Exam - 04 December 2023" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
