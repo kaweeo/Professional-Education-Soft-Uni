@@ -1,4 +1,5 @@
 from django import forms
+from django.template.context_processors import request
 
 from MusicApp.common.session_decorator import session_decorator
 from MusicApp.musics.models import Album, Song
@@ -49,6 +50,11 @@ class SongBaseForm(forms.Form):
         choices=[],
     )
 
+    music_file_data = forms.FileField(
+        label="Music File:",
+        required=True,
+    )
+
     # Over-riding the __init__ method so it can load the actual data from the DB
     # and store it like tuples in choices
     @session_decorator(session)
@@ -66,6 +72,7 @@ class SongCreateForm(SongBaseForm):
         new_song = Song(
             song_name=self.cleaned_data['song_name'],
             album_id=self.cleaned_data['album'],
+            music_file_data=request.FILES['music_file_data'].read(),
         )
 
         session.add(new_song)
