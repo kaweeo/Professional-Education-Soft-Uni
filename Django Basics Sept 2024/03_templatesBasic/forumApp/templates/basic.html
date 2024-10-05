@@ -1,0 +1,36 @@
+<!--This is a test template-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base Template</title>
+</head>
+<body>
+    <h1>Welcome to the Index Page</h1>
+
+    <p>Current time: {{ current_time }}</p>
+
+    <h2>Person Info</h2>
+    <p>Age: {{ person.age }}</p>
+    <p>Height: {{ person.height }} cm</p>
+
+    <h3>Some IDs</h3>
+    <ul>
+        {% for id in ids %}
+        <li>{{ id }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>{{ some_text }}</p>
+
+    <h2>Form:</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ my_form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
