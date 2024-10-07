@@ -1,39 +1,12 @@
 from datetime import datetime
 from django.http import HttpResponse
 from django.shortcuts import render
-from forumApp.posts.forms import PersonForm
+# from forumApp.posts.forms import PersonForm
 
 
 def index(request):
-    form = PersonForm(request.POST or None)
-
-    if request.method == 'POST':
-        print(request.POST['person_name'])
-
-    if form.is_valid():
-        print(form.cleaned_data['person_name'])
-
-    # context = {
-    #     "my_form": form,
-    # }
-    #
-    # return render(request, 'base.html', context)
-    #
-    # context = {
-    #     "current_time": datetime.now(),
-    #     "person": {
-    #         "age": 30,
-    #         "height": 185,
-    #     },
-    #     "ids": ["123123345345","sdfj1234123", "234543isdjfkls2342"],
-    #     "some_text": "hello, I am Kalin and I am a developer"
-    # }
-
-    # # # return HttpResponse("Hello, world. You're at the polls index.")
-    # return render(request, "base.html", context)
-
     context = {
-        "my_form": PersonForm(),
+        "my_form": "",
     }
 
     return render(request, "base.html", context)
@@ -64,3 +37,38 @@ def dashboard(request):
     }
 
     return render(request, "posts/dashboard.html", context)
+
+### LEARNING NOTES
+# def index(request):
+#     form = PersonForm(request.POST or None)
+#
+#     if request.method == 'POST':
+#         print(request.POST['person_name'])
+#
+#     if form.is_valid():
+#         print(form.cleaned_data['person_name'])
+#
+#     # context = {
+#     #     "my_form": form,
+#     # }
+#     #
+#     # return render(request, 'base.html', context)
+#     #
+#     # context = {
+#     #     "current_time": datetime.now(),
+#     #     "person": {
+#     #         "age": 30,
+#     #         "height": 185,
+#     #     },
+#     #     "ids": ["123123345345","sdfj1234123", "234543isdjfkls2342"],
+#     #     "some_text": "hello, I am Kalin and I am a developer"
+#     # }
+#
+#     # # # return HttpResponse("Hello, world. You're at the polls index.")
+#     # return render(request, "base.html", context)
+#
+#     context = {
+#         "my_form": PersonForm(),
+#     }
+#
+#     return render(request, "base.html", context)
