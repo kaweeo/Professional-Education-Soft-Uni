@@ -1,6 +1,11 @@
-from datetime import datetime
+# from datetime import datetime
+# from django.http import HttpResponse
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from forumApp.posts.forms import PostBaseForm, PostCreateForm, PostDeleteForm, SearchForm
+from forumApp.posts.models import Post
+
+
 # from forumApp.posts.forms import PersonForm
 
 
@@ -13,30 +18,79 @@ def index(request):
 
 
 def dashboard(request):
+    form = SearchForm(request.GET)
+    posts = Post.objects.all()
+
+    if request.method == "GET":
+        if form.is_valid():
+            query = form.cleaned_data["query"]
+            posts = posts.filter(title__icontains=query)
+
     context = {
-        "posts": [
-            {
-                "title": "How to create Django project?",
-                "author": "Kalin Krumov",
-                "content": "It's **quite** fun to create Django project",
-                "created_at": datetime.now(),
-            },
-            {
-                "title": "How to create Django project? 1",
-                "author": "Kalin Krumov",
-                "content": "It's quite fun to create Django project",
-                "created_at": datetime.now(),
-            },
-            {
-                "title": "How to create Django project? 2",
-                "author": "Kalin Krumov",
-                "content": "It's quite fun to create Django project",
-                "created_at": datetime.now(),
-            },
-        ]
+        "posts": posts,
+        "form": form,
     }
 
-    return render(request, "posts/dashboard.html", context)
+    return render(request, 'posts/dashboard.html', context)
+
+
+def add_post(request):
+    form = PostCreateForm(request.POST or None)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+
+            return redirect('dash')
+
+    context = {
+        "form": form,
+    }
+
+    return render(request, "posts/add-post.html", context)
+
+
+def edit_post(request, pk: int):
+    return HttpResponse()  # TODO: fix it
+
+
+def details_page(request, pk: int):
+    post = Post.objects.get(pk=pk)
+
+    context = {
+        "post": post,
+    }
+
+    return render(request, "posts/details-page.html", context)
+
+
+def delete_post(request, pk: id):
+    form = SearchForm(request.GET)
+    posts = Post.objects.all()
+
+    if request.method == "GET":
+        if form.is_valid():
+            query = form.cleaned_data["query"]
+            posts = posts.filter(title__icontains=query)
+
+
+    context = {
+        "posts": posts,
+    }
+
+    # post = Post.objects.get(pk=pk)
+    # form = PostDeleteForm(instance=post)  # we dont need: request.POST or None,
+    #
+    # if request.method == "POST":
+    #     post.delete()
+    #     return redirect('dash')
+    #
+    # context = {
+    #     "form": form,
+    #     "post": post,
+    # }
+    #
+    return render(request, "posts/delete-template.html", context)
 
 ### LEARNING NOTES
 # def index(request):
