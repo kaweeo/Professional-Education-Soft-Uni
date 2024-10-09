@@ -61,7 +61,7 @@ def details_page(request, pk: int):
         "post": post,
     }
 
-    return render(request, "posts/details-page.html", context)
+    return render(request, "posts/details-post.html", context)
 
 
 def delete_post(request, pk: id):
