@@ -14,7 +14,7 @@ def index(request):
         "my_form": "",
     }
 
-    return render(request, "base.html", context)
+    return render(request, "common/base.html", context)
 
 
 def dashboard(request):
