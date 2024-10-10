@@ -2,7 +2,7 @@
 # from django.http import HttpResponse
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from forumApp.posts.forms import PostBaseForm, PostCreateForm, PostDeleteForm, SearchForm
+from forumApp.posts.forms import PostBaseForm, PostCreateForm, PostDeleteForm, SearchForm, PostEditForm
 from forumApp.posts.models import Post
 
 
@@ -51,7 +51,23 @@ def add_post(request):
 
 
 def edit_post(request, pk: int):
-    return HttpResponse()  # TODO: fix it
+    post = Post.objects.get(pk=pk)
+
+    if request.method == "POST":
+        form = PostEditForm(request.POST, instance=post)
+
+        if form.is_valid():
+            form.save()
+            return redirect('dash')
+    else:
+        form = PostEditForm(instance=post)
+
+    context = {
+        "form": form,
+        "post": post,
+    }
+
+    return render(request, "posts/edit-post.html", context)
 
 
 def details_page(request, pk: int):
@@ -65,32 +81,32 @@ def details_page(request, pk: int):
 
 
 def delete_post(request, pk: id):
-    form = SearchForm(request.GET)
-    posts = Post.objects.all()
-
-    if request.method == "GET":
-        if form.is_valid():
-            query = form.cleaned_data["query"]
-            posts = posts.filter(title__icontains=query)
-
-
-    context = {
-        "posts": posts,
-    }
-
-    # post = Post.objects.get(pk=pk)
-    # form = PostDeleteForm(instance=post)  # we dont need: request.POST or None,
+    # form = SearchForm(request.GET)
+    # posts = Post.objects.all()
     #
-    # if request.method == "POST":
-    #     post.delete()
-    #     return redirect('dash')
+    # if request.method == "GET":
+    #     if form.is_valid():
+    #         query = form.cleaned_data["query"]
+    #         posts = posts.filter(title__icontains=query)
+    #
     #
     # context = {
-    #     "form": form,
-    #     "post": post,
+    #     "posts": posts,
     # }
-    #
-    return render(request, "posts/delete-template.html", context)
+
+    post = Post.objects.get(pk=pk)
+    form = PostDeleteForm(instance=post)  # we dont need: request.POST or None,
+
+    if request.method == "POST":
+        post.delete()
+        return redirect('dash')
+
+    context = {
+        "form": form,
+        "post": post,
+    }
+
+    return render(request, "posts/delete-post.html", context)
 
 ### LEARNING NOTES
 # def index(request):
