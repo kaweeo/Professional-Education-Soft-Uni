@@ -1,5 +1,6 @@
 {% load static %}
 {% load current_time %}
+{% load user_info %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +22,9 @@
     <p>Last refresh: {% current_time %}</p>
     {% block content %}
     {% endblock %}
+    <div>
+        {% user_info request.user %}
+    </div>
 </body>
     <script src='https://unpkg.com/akar-icons-fonts'></script>
 </html>
