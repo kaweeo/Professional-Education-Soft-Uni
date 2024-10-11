@@ -1,4 +1,5 @@
 {% load static %}
+{% load current_time %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,8 +18,11 @@
 </head>
 <body>
     {% include 'common/nav.html' %}
+    <p>Last refresh: {% current_time %}</p>
     {% block content %}
     {% endblock %}
 </body>
     <script src='https://unpkg.com/akar-icons-fonts'></script>
 </html>
+
+
