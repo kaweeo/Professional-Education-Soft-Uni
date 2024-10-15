@@ -1,5 +1,6 @@
 # from datetime import datetime
 # from django.http import HttpResponse
+from django.forms import modelform_factory
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from forumApp.posts.forms import PostBaseForm, PostCreateForm, PostDeleteForm, SearchForm, PostEditForm
@@ -10,8 +11,13 @@ from forumApp.posts.models import Post
 
 
 def index(request):
+    post_form = modelform_factory(
+        Post,
+        fields=('title',)
+    )
+
     context = {
-        "my_form": "",
+        "my_form": post_form,
     }
 
     return render(request, "common/index.html", context)

@@ -6,6 +6,12 @@ from forumApp.posts.mixins import DisableFieldsMixin
 from forumApp.posts.models import Post
 
 
+class PostAuthorForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('author',)
+
+
 class PostBaseForm(forms.ModelForm):
     class Meta:
         model = Post
@@ -61,7 +67,7 @@ class PostEditForm(PostBaseForm):
 
 class PostDeleteForm(PostBaseForm, DisableFieldsMixin):
     # disabled_fields = ('title', 'author')
-    disabled_fields = ('__all__',)
+    disabled_fields = ('__all__', )
 
 
 class SearchForm(forms.Form):
