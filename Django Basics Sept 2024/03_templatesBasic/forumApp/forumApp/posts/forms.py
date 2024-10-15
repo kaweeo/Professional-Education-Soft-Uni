@@ -9,6 +9,15 @@ class PostBaseForm(forms.ModelForm):
         model = Post
         fields = "__all__"
 
+        error_messages = {
+            'title': {
+                'required': "Please enter the title of your post!",
+                'max_length': f"Title too long! Please keep it under: {Post.TITLE_MAX_LENGTH}",
+            },
+            'author': {
+                'required': "Please enter the author!",
+            }
+        }
 
 class PostCreateForm(PostBaseForm):
     pass
