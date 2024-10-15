@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth import authenticate
+from django.forms import formset_factory
 
 from forumApp.posts.mixins import DisableFieldsMixin
 # from forumApp.posts.choices import LanguageChoice
-from forumApp.posts.models import Post
+from forumApp.posts.models import Post, Comment
 
 
 class PostAuthorForm(forms.ModelForm):
@@ -67,7 +68,7 @@ class PostEditForm(PostBaseForm):
 
 class PostDeleteForm(PostBaseForm, DisableFieldsMixin):
     # disabled_fields = ('title', 'author')
-    disabled_fields = ('__all__', )
+    disabled_fields = ('__all__',)
 
 
 class SearchForm(forms.Form):
@@ -77,6 +78,46 @@ class SearchForm(forms.Form):
         max_length=100,
         widget=forms.TextInput(attrs={"placeholder": "Search for a post..."}),
     )
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('author', 'content')
+
+        labels = {
+            'author': '',
+            'content': '',
+        }
+
+        error_messages = {
+            'author': {
+                'required': "Please enter the author name!",
+            },
+            'content': {
+                'required': "Contet is required!",
+            }
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['author'].widget.attrs.update({
+            'class': 'form-control',
+            'placeholder': 'Your Name',
+        })
+
+        self.fields['content'].widget.attrs.update({
+            'class': 'form-control',
+            'placeholder': 'Your Content...',
+        })
+
+CommentFormSet = formset_factory(CommentForm, extra=3)
+
+
+
+
+
 
 # # Example to see diff between ModelForm and Form
 # class PostForm(forms.Form):
