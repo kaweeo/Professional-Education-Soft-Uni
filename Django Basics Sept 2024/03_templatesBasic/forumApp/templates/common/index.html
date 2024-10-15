@@ -1,12 +1,11 @@
 {% extends 'common/base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
     <h1>Hello user!</h1>
 
     <form>
         {{ my_form }}
+        {% crispy my_form %}
     </form>
-
-
 
 {% endblock %}
