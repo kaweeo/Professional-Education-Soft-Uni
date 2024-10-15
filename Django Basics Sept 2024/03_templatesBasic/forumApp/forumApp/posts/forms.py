@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth import authenticate
 
 from forumApp.posts.mixins import DisableFieldsMixin
 # from forumApp.posts.choices import LanguageChoice
@@ -20,6 +21,36 @@ class PostBaseForm(forms.ModelForm):
             }
         }
 
+    def clean_author(self):  # This method will be call from full_clean (searches for 'clean_*')
+        author = self.cleaned_data.get('author')
+
+        if not author[0].isupper():
+            raise ValidationError('Author name should start with capital letter!')
+
+        return author
+
+    def clean(self):  # Overriding the clean method to inplement custom logic between the fields
+        cleaned_data = super().clean()
+
+        title = cleaned_data.get('title')
+        content = cleaned_data.get('content')
+
+        if title and content and title in content:
+            raise ValidationError('The post title should not be inclunded in content!')
+
+        return cleaned_data
+
+    def save(self, commit=True):  # Overriding the save method
+        post = super().save(commit=False)  # Request for saving in the DB is not sent, only instance of a post
+
+        post.title = post.title.capitalize()
+
+        if commit:
+            post.save()
+
+        return post
+
+
 class PostCreateForm(PostBaseForm):
     pass
 
@@ -30,7 +61,7 @@ class PostEditForm(PostBaseForm):
 
 class PostDeleteForm(PostBaseForm, DisableFieldsMixin):
     # disabled_fields = ('title', 'author')
-    disabled_fields = ('__all__', )
+    disabled_fields = ('__all__',)
 
 
 class SearchForm(forms.Form):
