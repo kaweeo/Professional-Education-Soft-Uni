@@ -1,8 +1,13 @@
-# from datetime import datetime
+from datetime import datetime
 # from django.http import HttpResponse
+
 from django.forms import modelform_factory
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import render, redirect
+from django.utils.decorators import classonlymethod
+from django.views import View
+from django.views.generic import TemplateView
+
 from forumApp.posts.forms import PostBaseForm, PostCreateForm, PostDeleteForm, SearchForm, PostEditForm, CommentForm, \
     CommentFormSet
 from forumApp.posts.models import Post
@@ -10,18 +15,64 @@ from forumApp.posts.models import Post
 
 # from forumApp.posts.forms import PersonForm
 
+class BaseView:  # Writing own VERY basic View class
+    @classonlymethod
+    def as_view(cls):
 
-def index(request):
-    post_form = modelform_factory(
-        Post,
-        fields=('title', 'content', 'author'),
-    )
+        def view(request, *args, **kwargs):
+            view_instance = cls()
+            return view_instance.dispatch(request, *args, **kwargs)
 
-    context = {
-        "my_form": post_form,
-    }
+        return view
 
-    return render(request, "common/index.html", context)
+    def dispatch(self, request, *args, **kwargs):
+        if request.method == "GET":
+            return self.get(request, *args, **kwargs)
+        elif request.method == "POST":
+            return self.post(request, *args, **kwargs)
+        else:
+            return HttpResponseNotAllowed(['GET', 'POST'])
+
+
+class IndexView(TemplateView):
+    template_name = 'common/index.html'  # static way
+
+    def get_template_names(self):  # dynamic way
+        if self.request.user.is_authenticated:
+            return ['common/index_logged_in.html']
+        else:
+            return ['common/index.html']
+
+
+class Index(View):  # Index(BaseView)
+    def get(self, request):
+        # post_form = modelform_factory(
+        #     Post,
+        #     fields=('title', 'content', 'author'),
+        # )
+        #
+        # context = {
+        #     "my_form": post_form,
+        # }
+
+        context = {
+            'dynamic_time': datetime.now()
+        }
+
+        return render(request, "common/index.html", context)
+
+
+# def index(request):               # FBV
+#     post_form = modelform_factory(
+#         Post,
+#         fields=('title', 'content', 'author'),
+#     )
+#
+#     context = {
+#         "my_form": post_form,
+#     }
+#
+#     return render(request, "common/index.html", context)
 
 
 def dashboard(request):
@@ -89,8 +140,6 @@ def details_page(request, pk: int):
                     comment.save()
 
             return redirect('details-post', pk=post.id)
-
-
 
     context = {
         "post": post,

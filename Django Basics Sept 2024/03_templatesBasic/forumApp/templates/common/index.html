@@ -2,10 +2,15 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <h1>Hello user!</h1>
+<!--    <form method="post">-->
+<!--&lt;!&ndash;        {{ my_form }}&ndash;&gt;-->
 
-    <form>
-        {{ my_form }}
-        {% crispy my_form %}
-    </form>
+<!--        {% csrf_token %}-->
+<!--        <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--    </form>-->
 
+{{ dynamic_time }}
 {% endblock %}
+
+
+<!--        {% crispy my_form %}-->
