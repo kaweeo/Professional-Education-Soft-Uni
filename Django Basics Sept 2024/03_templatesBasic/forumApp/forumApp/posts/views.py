@@ -4,16 +4,17 @@ from datetime import datetime
 from django.forms import modelform_factory
 from django.http import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.utils.decorators import classonlymethod
 from django.views import View
-from django.views.generic import TemplateView
-
+from django.views.generic import TemplateView, RedirectView
 from forumApp.posts.forms import PostBaseForm, PostCreateForm, PostDeleteForm, SearchForm, PostEditForm, CommentForm, \
     CommentFormSet
 from forumApp.posts.models import Post
 
 
 # from forumApp.posts.forms import PersonForm
+
 
 class BaseView:  # Writing own VERY basic View class
     @classonlymethod
@@ -36,6 +37,16 @@ class BaseView:  # Writing own VERY basic View class
 
 class IndexView(TemplateView):
     template_name = 'common/index.html'  # static way
+    extra_context = {
+        'static_time': datetime.now()
+    }  # static way
+
+    def get_context_data(self, **kwargs):  # dynamic way
+        context = super().get_context_data(**kwargs)
+
+        context['dynamic_time'] = datetime.now()
+
+        return context
 
     def get_template_names(self):  # dynamic way
         if self.request.user.is_authenticated:
@@ -176,6 +187,13 @@ def delete_post(request, pk: id):
     }
 
     return render(request, "posts/delete-post.html", context)
+
+
+class RedirectHomeView(RedirectView):
+    url = reverse_lazy('index')  # static way
+
+    def get_redirect_url(self, *args, **kwargs):  # dynamic way
+        pass
 
 ### LEARNING NOTES
 # def index(request):
