@@ -7,7 +7,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import classonlymethod
 from django.views import View
-from django.views.generic import TemplateView, RedirectView
+from django.views.generic import TemplateView, RedirectView, ListView, FormView, CreateView, UpdateView, DetailView, \
+    DeleteView
 from forumApp.posts.forms import PostBaseForm, PostCreateForm, PostDeleteForm, SearchForm, PostEditForm, CommentForm, \
     CommentFormSet
 from forumApp.posts.models import Post
@@ -86,56 +87,92 @@ class Index(View):  # Index(BaseView)
 #     return render(request, "common/index.html", context)
 
 
-def dashboard(request):
-    form = SearchForm(request.GET)
-    posts = Post.objects.all()
+class DashboardView(ListView, FormView):
+    template_name = 'posts/dashboard.html'
+    form_class = SearchForm
+    context_object_name = 'posts'
+    success_url = reverse_lazy('dash')
+    model = Post
 
-    if request.method == "GET":
-        if form.is_valid():
-            query = form.cleaned_data["query"]
-            posts = posts.filter(title__icontains=query)
+    def get_queryset(self):
+        queryset = self.model.objects.all()
 
-    context = {
-        "posts": posts,
-        "form": form,
-    }
+        if 'query' in self.request.GET:
+            query = self.request.GET['query']
+            queryset = self.queryset.filter(title__icontains=query)
 
-    return render(request, 'posts/dashboard.html', context)
-
-
-def add_post(request):
-    form = PostCreateForm(request.POST or None, request.FILES or None)
-
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-            return redirect('dash')
-
-    context = {
-        "form": form,
-    }
-
-    return render(request, "posts/add-post.html", context)
+        return queryset
 
 
-def edit_post(request, pk: int):
-    post = Post.objects.get(pk=pk)
+# def dashboard(request):
+#     form = SearchForm(request.GET)
+#     posts = Post.objects.all()
+#
+#     if request.method == "GET":
+#         if form.is_valid():
+#             query = form.cleaned_data["query"]
+#             posts = posts.filter(title__icontains=query)
+#
+#     context = {
+#         "posts": posts,
+#         "form": form,
+#     }
+#
+#     return render(request, 'posts/dashboard.html', context)
 
-    if request.method == "POST":
-        form = PostEditForm(request.POST, instance=post)
 
-        if form.is_valid():
-            form.save()
-            return redirect('dash')
-    else:
-        form = PostEditForm(instance=post)
+class AddPostView(CreateView):
+    model = Post
+    form_class = PostCreateForm
+    template_name = 'posts/add-post.html'
+    success_url = reverse_lazy('dash')
 
-    context = {
-        "form": form,
-        "post": post,
-    }
 
-    return render(request, "posts/edit-post.html", context)
+# def add_post(request):
+#     form = PostCreateForm(request.POST or None, request.FILES or None)
+#
+#     if request.method == "POST":
+#         if form.is_valid():
+#             form.save()
+#             return redirect('dash')
+#
+#     context = {
+#         "form": form,
+#     }
+#
+#     return render(request, "posts/add-post.html", context)
+
+
+class EditPostView(UpdateView):
+    model = Post
+    # form_class = PostEditForm
+    template_name = 'posts/edit-post.html'
+    success_url = reverse_lazy('dash')
+
+    def get_form_class(self):
+        if self.request.user.is_superuser:
+            return modelform_factory(Post, fields=('title', 'content', 'author', 'language'))
+        else:
+            return modelform_factory(Post, fields=('content', ))
+
+# def edit_post(request, pk: int):
+#     post = Post.objects.get(pk=pk)
+#
+#     if request.method == "POST":
+#         form = PostEditForm(request.POST, instance=post)
+#
+#         if form.is_valid():
+#             form.save()
+#             return redirect('dash')
+#     else:
+#         form = PostEditForm(instance=post)
+#
+#     context = {
+#         "form": form,
+#         "post": post,
+#     }
+#
+#     return render(request, "posts/edit-post.html", context)
 
 
 def details_page(request, pk: int):
@@ -160,33 +197,41 @@ def details_page(request, pk: int):
     return render(request, "posts/details-post.html", context)
 
 
-def delete_post(request, pk: id):
-    # form = SearchForm(request.GET)
-    # posts = Post.objects.all()
-    #
-    # if request.method == "GET":
-    #     if form.is_valid():
-    #         query = form.cleaned_data["query"]
-    #         posts = posts.filter(title__icontains=query)
-    #
-    #
-    # context = {
-    #     "posts": posts,
-    # }
+class DeletePostView(DeleteView):
+    model = Post
+    template_name = 'posts/delete-post.html'
+    # context_object_name = 'post'
+    success_url = reverse_lazy('dash')
 
-    post = Post.objects.get(pk=pk)
-    form = PostDeleteForm(instance=post)  # we dont need: request.POST or None,
 
-    if request.method == "POST":
-        post.delete()
-        return redirect('dash')
 
-    context = {
-        "form": form,
-        "post": post,
-    }
-
-    return render(request, "posts/delete-post.html", context)
+# def delete_post(request, pk: id):
+#     # form = SearchForm(request.GET)
+#     # posts = Post.objects.all()
+#     #
+#     # if request.method == "GET":
+#     #     if form.is_valid():
+#     #         query = form.cleaned_data["query"]
+#     #         posts = posts.filter(title__icontains=query)
+#     #
+#     #
+#     # context = {
+#     #     "posts": posts,
+#     # }
+#
+#     post = Post.objects.get(pk=pk)
+#     form = PostDeleteForm(instance=post)  # we dont need: request.POST or None,
+#
+#     if request.method == "POST":
+#         post.delete()
+#         return redirect('dash')
+#
+#     context = {
+#         "form": form,
+#         "post": post,
+#     }
+#
+#     return render(request, "posts/delete-post.html", context)
 
 
 class RedirectHomeView(RedirectView):
@@ -194,6 +239,7 @@ class RedirectHomeView(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):  # dynamic way
         pass
+
 
 ### LEARNING NOTES
 # def index(request):
