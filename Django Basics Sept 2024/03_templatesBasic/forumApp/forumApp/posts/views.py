@@ -1,16 +1,19 @@
-from datetime import datetime
+from datetime import datetime, time
 # from django.http import HttpResponse
 
 from django.forms import modelform_factory
 from django.http import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.utils.decorators import classonlymethod
+from django.utils.decorators import classonlymethod, method_decorator
 from django.views import View
 from django.views.generic import TemplateView, RedirectView, ListView, FormView, CreateView, UpdateView, DetailView, \
     DeleteView
+
+from forumApp.decorators import measure_execution_time
 from forumApp.posts.forms import PostBaseForm, PostCreateForm, PostDeleteForm, SearchForm, PostEditForm, CommentForm, \
     CommentFormSet
+from forumApp.posts.mixins import TimeRestrictedMixin
 from forumApp.posts.models import Post
 
 
@@ -35,9 +38,10 @@ class BaseView:  # Writing own VERY basic View class
         else:
             return HttpResponseNotAllowed(['GET', 'POST'])
 
-
-class IndexView(TemplateView):
+@method_decorator(measure_execution_time, name='dispatch')
+class IndexView(TimeRestrictedMixin, TemplateView):
     template_name = 'common/index.html'  # static way
+    end_time = time(17, 30)
     extra_context = {
         'static_time': datetime.now()
     }  # static way
@@ -56,22 +60,22 @@ class IndexView(TemplateView):
             return ['common/index.html']
 
 
-class Index(View):  # Index(BaseView)
-    def get(self, request):
-        # post_form = modelform_factory(
-        #     Post,
-        #     fields=('title', 'content', 'author'),
-        # )
-        #
-        # context = {
-        #     "my_form": post_form,
-        # }
-
-        context = {
-            'dynamic_time': datetime.now()
-        }
-
-        return render(request, "common/index.html", context)
+# class Index(View):  # Index(BaseView)
+#     def get(self, request):
+#         # post_form = modelform_factory(
+#         #     Post,
+#         #     fields=('title', 'content', 'author'),
+#         # )
+#         #
+#         # context = {
+#         #     "my_form": post_form,
+#         # }
+#
+#         context = {
+#             'dynamic_time': datetime.now()
+#         }
+#
+#         return render(request, "common/index.html", context)
 
 
 # def index(request):               # FBV
@@ -99,7 +103,7 @@ class DashboardView(ListView, FormView):
         queryset = self.model.objects.all()
 
         if 'query' in self.request.GET:
-            query = self.request.GET['query']
+            query = self.request.GET.get('query')
             queryset = self.queryset.filter(title__icontains=query)
 
         return queryset
@@ -152,7 +156,7 @@ class EditPostView(UpdateView):
 
     def get_form_class(self):
         if self.request.user.is_superuser:
-            return modelform_factory(Post, fields=('title', 'content', 'author', 'language'))
+            return modelform_factory(Post, fields=('title', 'content', 'author', 'languages'))
         else:
             return modelform_factory(Post, fields=('content',))
 
