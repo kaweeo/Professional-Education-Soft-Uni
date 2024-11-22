@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/03_templatesBasic.iml" filepath="$PROJECT_DIR$/.idea/03_templatesBasic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Exercises on URLs, Views, Templates and other/.idea/03_templatesBasic.iml" filepath="$PROJECT_DIR$/../Exercises on URLs, Views, Templates and other/.idea/03_templatesBasic.iml" />
     </modules>
   </component>
 </project>
